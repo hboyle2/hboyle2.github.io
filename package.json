@@ -23,7 +23,7 @@
   "overrides": {
     "typescript": "^5.7.3"
   },
-  "homepage": "https://hboyle2.github.io/dog-picker",
+  "homepage": "https://hboyle2.github.io",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
