@@ -1,5 +1,3 @@
-import { Dog } from "./types";
-
 interface Params {
   next?: string;
   prev?: string;
@@ -35,7 +33,7 @@ export const getDogDetails = async (dogs: { id: string }[]) => {
   return dogDetails;
 };
 
-export const getMatch = async (dogs: { id: string }[]) => {
+export const getMatch = async (dogs: string[]) => {
   const res = await fetch(`${apiUrl}/dogs/match`, {
     method: "POST",
     credentials: "include",
@@ -44,6 +42,9 @@ export const getMatch = async (dogs: { id: string }[]) => {
       "Content-Type": "application/json",
     },
   });
-  const dogDetails = await res.json();
-  return dogDetails;
+  const dog = await res.json();
+  if (dog) {
+    const matchDetails = await getDogDetails([dog.match]);
+    return matchDetails;
+  }
 };

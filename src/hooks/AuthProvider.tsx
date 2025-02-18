@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,13 +7,16 @@ interface AuthContextProps {
   login: (e: any) => void;
   logOut: () => void;
 }
+interface Props {
+  children?: ReactNode;
+}
 const AuthContext = createContext<AuthContextProps>({
   isLoggedIn: false,
   login: () => {},
   logOut: () => {},
 });
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }: Props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const login = async (data: any) => {

@@ -5,7 +5,7 @@ const Login = () => {
   const [input, setInput] = useState({ email: "", name: "" });
   const auth = useAuth();
 
-  const handleSubmitEvent = (e) => {
+  const handleSubmitEvent = (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     if (input.email !== "" && input.name !== "") {
       auth.login(input);
@@ -14,7 +14,7 @@ const Login = () => {
     alert("please provide a valid input");
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<any>) => {
     const { name, value } = e.target;
     setInput((prev) => ({
       ...prev,
