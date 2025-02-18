@@ -11,12 +11,10 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
             <Route element={<PrivateRoute />}>
               <Route path="/dogs" element={<Dogs />} />
             </Route>
-            {/* Other routes */}
+            <Route path="/" element={<Login />} />
           </Routes>
         </AuthProvider>
       </Router>

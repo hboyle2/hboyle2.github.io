@@ -1,6 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useAuth } from "./hooks/AuthProvider";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 const Login = () => {
   const [input, setInput] = useState({ email: "", name: "" });
   const auth = useAuth();
@@ -22,31 +26,39 @@ const Login = () => {
     }));
   };
   return (
-    <form onSubmit={handleSubmitEvent}>
-      <div className="form_control">
-        <label htmlFor="user-email">Email:</label>
-        <input
+    <>
+      <Typography fontSize="3rem" variant="h1">
+        Log in to find your new companion
+      </Typography>
+      <Box
+        component="form"
+        onSubmit={handleSubmitEvent}
+        sx={{
+          flexDirection: "column",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <TextField
           type="email"
-          id="user-email"
           name="email"
+          label="email"
           placeholder="example@yahoo.com"
-          aria-describedby="user-email"
-          aria-invalid="false"
           onChange={handleInput}
+          sx={{ m: 1 }}
         />
-      </div>
-      <div className="form_control">
-        <label htmlFor="name">Name:</label>
-        <input
+        <TextField
+          sx={{ mb: 1 }}
+          label="name"
           id="name"
           name="name"
-          aria-describedby="user-name"
-          aria-invalid="false"
           onChange={handleInput}
         />
-      </div>
-      <button className="btn-submit">Submit</button>
-    </form>
+        <Button type="submit" variant="outlined">
+          Login
+        </Button>
+      </Box>
+    </>
   );
 };
 
